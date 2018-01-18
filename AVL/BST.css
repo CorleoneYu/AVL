@@ -1,0 +1,138 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+.html-root {
+  margin-top: 50px;
+  position: relative;
+  display: flex;
+}
+.container {
+  width: 50%;
+}
+div.tree {
+  display: flex;
+  flex-wrap: wrap;/*span 需要独占一行，所以此 flex 布局必须要折行显示 */
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+div.tree > span {
+
+    width: 100%;
+    text-align: center;
+    padding-bottom: 3em;
+    background-image: url(both.svg);
+    background-repeat: no-repeat;
+    background-size: 100% calc(100% - 0);
+    background-position: 0 0;
+}
+div.tree > span > p {
+  width: 5em;
+  display: inline-block;
+}
+/*没有后代的子树不再展示连线和多余空间*/
+div.tree > span:only-child {
+  background-image: none;
+  padding-bottom: 0;
+}
+/*被查询到的节点*/
+div.tree > span
+/*右/右子树自动往左/右偏*/
+div.left {
+  margin-right: auto;
+}
+div.right {
+  margin-left: auto;
+}
+/*只有单边子树的元素，让此单边子树占用90%的空间*/
+div.only-has-left > div.tree {
+  width: 90%;
+  margin-right: auto;
+}
+div.only-has-right > div.tree {
+  width: 90%;
+  margin-left: auto;
+}
+
+/*只有单边子树的元素只显示单边的连线*/
+div.only-has-left > span {
+  background-image: url(left.svg);
+}
+div.only-has-right > span {
+  background-image: url(right.svg);
+}
+.tree > .tree {
+  width: 50%;
+}
+
+/*搜索路径上的节点*/
+div.searched > span > p {
+  // background: #009688 !important;
+}
+/*插入的节点*/
+#nodeVal {
+  background: black;
+  color: white;
+}
+#nodeHeight {
+  background:#009688;
+  color: white;
+}
+#nodeBF {
+  background: #1E9FFF;
+  color: white;
+}
+/*查询 删除 插入的样式*/
+.btns-container {
+  position: relative;
+  width: 80%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-box {
+  display: flex;
+  position: relative;
+  width: 20%;
+}
+.btn-box > input,
+.btn{
+  display: inline-block;
+  box-sizing: border-box;
+  height: 40px;
+  line-height: 40px;
+}
+
+.btn-box > input {
+  width: 70%;
+  padding-left: 5px;
+}
+.btn{
+  width: 30%;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+.search-btn {
+  background: #009688;
+}
+.insert-btn {
+  background: #1E9FFF;
+}
+
+.remove-btn {
+  background: #FF5722;
+}
+
+.create-btn {
+  background: #FFB800;
+}
+
+.tips {
+  position: absolute;
+  top: 100%;
+  font-size: 14px;
+  color: red;
+}
